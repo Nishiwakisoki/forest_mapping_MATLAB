@@ -1,7 +1,8 @@
 %% analysis the data of DEM
-DEM = pcread("forest_result/akaezomatu_map_503s_DEM.pcd");
+DEM = pcread("/home/robotics/MATLAB/usr/forest_result/karamatu_map_503s_DEM.pcd");
+nongroundPtcloud = pcread("/home/robotics/MATLAB/usr/forest_result/karamatu_map_503s_nonground.pcd");
 show_figure_pointcloud(DEM)
-
+show_figure_pointcloud_pair(DEM,nongroundPtcloud)
 function show_figure_pointcloud(pc)
 hFigTraj = figure;
 axTraj = axes(Parent=hFigTraj,Color='black');
@@ -17,5 +18,20 @@ xlabel(axTraj,'X (m)')
 ylabel(axTraj,'Y (m)')
 zlabel(axTraj,'Z (m)')
 grid on
+hold off
+end
+
+function show_figure_pointcloud_pair(groundPtCloud,nonGroundPtCloud)
+hFigTraj = figure;
+axTraj = axes(Parent=hFigTraj,Color='black');
+pcshowpair(groundPtCloud,nonGroundPtCloud,Parent=axTraj)
+hold on
+axis on
+xlabel(axTraj,'X (m)')
+ylabel(axTraj,'Y (m)')
+zlabel(axTraj,'Z (m)')
+title(axTraj,"Kara")
+grid on
+grid minor
 hold off
 end

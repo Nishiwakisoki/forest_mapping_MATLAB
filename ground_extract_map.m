@@ -1,12 +1,12 @@
-pc = pcread("forest_result/karamatu_map_503s_trim.pcd");
+pc = pcread("/home/robotics/MATLAB/usr/forest_result/todo_map_503s_trim.pcd");
 pcshow(pc)
 [groundPtCloud, nonGroundPtCloud] = pc_ground_extraction(pc);
 show_figure_pointcloud(groundPtCloud)
 show_figure_pointcloud_pair(groundPtCloud,nonGroundPtCloud)
 
 %%
-pcwrite(groundPtCloud,"forest_result/akaezomatu_map_503s_DEM.pcd");
-
+pcwrite(groundPtCloud,"forest_result/todo_map_503s_DEM.pcd");
+pcwrite(nonGroundPtCloud,"forest_result/todo_map_503s_nonground.pcd")
 function [groundPtCloud,nongroundPtCloud] = pc_ground_extraction(pc)
 % -- read pointcloud and normalized --
 % Segment Ground and extract non-ground and ground points
